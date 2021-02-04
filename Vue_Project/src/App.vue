@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Navbar from './components/Narbar'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Navbar
   },
   created(){
     this.$http.get(`https://randomuser.me/api/`).then((response) => {

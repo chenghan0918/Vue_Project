@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '@/components/HelloWorld'
+import Home from '@/components/Dashboard'
+
 Vue.use(VueRouter)
 export default new VueRouter({ 
     routes:[ //路由設定
