@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="form-signin" >
+    <form class="form-signin">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       <label for="inputEmail" class="visually-hidden">Email address</label>
       <input
@@ -10,6 +10,7 @@
         placeholder="Email address"
         required
         autofocus
+        v-model="user.userEmail"
       />
       <label for="inputPassword" class="visually-hidden">Password</label>
       <input
@@ -18,16 +19,36 @@
         class="form-control"
         placeholder="Password"
         required
+        v-model="user.userPassword"
       />
       <div class="checkbox mb-3">
         <label> <input type="checkbox" value="remember-me" /> Remember me </label>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" @click.prevent="login()">Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
     </form>
   </div>
 </template>
 <script>
+export default {
+  methods: {
+    login(){
+        const vm = this;
+        const api = "https://vue-course-api.hexschool.io/admin/signin";
+        this.$http.post(api, vm.user).then((response) => {
+          console.log(response.data);
+        })
+    }
+  },
+  data() {
+    return {
+      user:{
+          userEmail:'',
+          userPassword:''
+      }
+    }
+  },
+}
 </script>
 <style scoped>
 html,
